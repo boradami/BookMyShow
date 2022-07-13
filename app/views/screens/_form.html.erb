@@ -1,0 +1,22 @@
+<%= form_with model: @screen do |f| %>
+
+  <div>
+    <%= f.label :screen_name %>
+    <%= f.text_field :screen_name %>
+  </div><br>
+
+  <div>
+    <%= f.label :total_seats %>
+    <%= f.text_field :total_seats %>
+  </div><br>
+
+  <div>
+    <%= f.label :cinema, "Cinema" %>
+    <%= f.select :cinema_id, Cinema.all.map{|c| [c.name, c.id]} %>
+  </div><br>
+  
+  <div>
+    <%= f.submit %>
+  </div>
+
+<% end %>

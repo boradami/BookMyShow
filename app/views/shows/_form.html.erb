@@ -1,0 +1,50 @@
+<%= form_with model: @show do |f| %>
+
+  <% if @show.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@show.errors.count, "error") %> prohibited
+        this show from being saved:
+      </h2>
+      <ul>
+        <% @show.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= f.label :show_start_time %>
+    <%= f.time_field :show_start_time %>
+  </div><br>
+
+  <div>
+    <%= f.label :show_end_time %>
+    <%= f.time_field :show_end_time %>
+  </div><br>
+
+  <div>
+    <%= f.label :amount %>
+    <%= f.text_field :amount %>
+  </div><br>
+
+  <div>
+    <%= f.label :screen, "Screen Name" %>
+    <%= f.select :screen_id, Screen.all.map{|s| [s.screen_name, s.id]} %>
+  </div><br>
+
+  <div>
+    <%= f.label :screen, "Movie Name" %>
+    <%= f.select :movie_id, Movie.all.map{|m| [m.name, m.id]} %>
+  </div><br>
+
+  <div>
+    <%= f.label :screen, "Cinema Name" %>
+    <%= f.select :cinema_id, Cinema.all.map{|c| [c.name, c.id]} %>
+  </div><br>
+
+  <div>
+    <%= f.submit %>
+  </div>
+
+<% end %>

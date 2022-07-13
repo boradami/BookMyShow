@@ -1,0 +1,26 @@
+<h1>Select Seats</h1>
+
+<%= form_with model:  @booking do |f| %>
+
+  <div>
+    <%= hidden_field_tag 'booking[show_id]', @show.id %>
+  </div><br>
+
+  <div>
+    <%= f.label :user, "User" %>
+    <%= f.select :user_id, User.all.map{|u| [u.email, u.id]} %>
+  </div><br>
+
+  <div>
+    <%= f.collection_check_boxes(:seat_ids, @screen.seats, :id, :seat_number) do |seat| %>
+      <%= seat.label id: "selected_seats" do %>
+        <%= seat.check_box(checked: @booked_seats.include?(seat.object.id)) + seat.text %>
+      <% end %>
+    <% end %>
+  </div><br>
+  
+  <div>
+    <%= f.submit %>
+  </div>
+
+<% end %>

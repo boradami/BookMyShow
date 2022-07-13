@@ -1,0 +1,25 @@
+
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Show Time<th>
+  </thead>
+  <tbody>
+    <% @cinemas.each do |cinema| %>
+      <tr>
+        <td><%= cinema.name %> </td>
+        <td><%= cinema.address %></td>
+        <% cinema.shows.each do |show| %>
+          <td>
+            <%= link_to new_booking_path(screen_id: show.screen.id, show_id: show.id) do %>
+              <%= show.show_start_time.strftime("%H:%M") %>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table><br><br>
+
+<h3><%= link_to "New Cinema", new_cinema_path %></h3>

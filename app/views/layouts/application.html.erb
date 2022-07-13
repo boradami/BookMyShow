@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BookMyShow</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+  </head>
+
+  <body>
+  
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <h4><%= link_to "Movie", new_movie_path, class: "badge badge-success" %></h4>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+          <h4><%= link_to "Cinema", new_cinema_path, class: "badge badge-success" %></h4>
+          </li>
+          <li class="nav-item">
+            <h4><%= link_to "Screen", new_screen_path, class: "badge badge-success" %></h4>
+          </li>
+          <li class="nav-item">
+            <h4><%= link_to "Seat", new_seat_path, class: "badge badge-success" %></h4>
+          </li>
+          <li class="nav-item">
+            <h4><%= link_to "Show", new_show_path, class: "badge badge-success" %></h4>
+          </li>
+    
+            <% if user_signed_in? %>
+            <h4><%= link_to 'Sign Out as User', destroy_user_session_path, method: :delete, class: "badge badge-success" %></h4> |
+            <% elsif !admin_signed_in? %>
+            <h4><%= link_to "Sign In as User", new_user_session_path, class: "badge badge-success" %></h4> |
+            <% end %>
+
+        </ul>
+      </div>
+    </nav><br>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <%= yield %>
+  </body>
+</html>

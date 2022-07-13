@@ -1,0 +1,18 @@
+
+<h1>Seats</h1>
+<table>
+  <thead>
+    <th>Seat Number</th>
+    <th>Screen</th>
+  </thead>
+  <tbody>
+    <% @seats.each do |seat| %>
+      <tr>
+        <td><%= seat.seat_number %></td>
+        <td><%= seat.screen.screen_name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table><br><br>
+
+<h3><%= link_to "New Seat", new_seat_path%></h3>

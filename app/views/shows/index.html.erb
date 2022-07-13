@@ -1,0 +1,30 @@
+
+<h1>Shows</h1>
+<table>
+  <thead>
+    <th>Show Start Time</th>
+    <th>Start End Time</th>
+    <th>Amount</th>
+    <th>Screen</th>
+    <th>Movie</th>
+    <th>Cinema</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+    <% @shows.each do |show| %>
+      <tr>
+        <td><%= show.show_start_time.strftime("%H:%M:%S") %></td>
+        <td><%= show.show_end_time.strftime("%H:%M:%S") %></td>
+        <td><%= show.amount %></td>
+        <td><%= show.screen.screen_name %></td>
+        <td><%= show.movie.name %></td>
+        <td><%= show.cinema.name %></td>
+        <td><%= link_to "Show", show_path(show) %></td>
+        <td><%= link_to "Edit", edit_show_path(show) %></td>
+        <td><%= link_to "Delete", show_path(show), method: :delete, data: { confirm: "Are you sure..?"}%>
+      </tr>
+    <% end %>
+  </tbody>
+</table><br><br>
+
+<h3><%= link_to "New show", new_show_path%></h3>

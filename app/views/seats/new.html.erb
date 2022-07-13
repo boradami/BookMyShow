@@ -1,0 +1,20 @@
+<h2>Create Seat</h2>
+
+<%= form_with model: @seat do |f| %>
+
+  <div>
+    <%= f.label :seat_number %>
+    <%= f.text_field :seat_number %>
+  </div><br>
+
+  <div>
+    <%= f.label :screen_id %>
+    <%= f.select :screen_id, Screen.all.map{|s| [s.screen_name, s.id]} %>
+  </div><br>
+  
+  <div>
+    <%= f.submit %>
+  </div>
+
+<% end %>
+<%= link_to "BACK", seats_path %>

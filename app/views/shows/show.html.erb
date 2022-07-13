@@ -1,0 +1,23 @@
+
+<%= link_to "Back", shows_path %>
+<h1>Show</h1>
+<table>
+  <thead>
+    <th>Show Start Time</th>
+    <th>Start End Time</th>
+    <th>Amount</th>
+    <th>Screen</th>
+    <th>Movie</th>
+    <th>Cinema</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @show.show_start_time.strftime("%H:%M:%S") %></td>
+      <td><%= @show.show_end_time.strftime("%H:%M:%S") %></td>
+      <td><%= @show.amount %></td>
+      <td><%= @show.screen.screen_name %></td>
+      <td><%= @show.movie.name %></td>
+      <td><%= @show.cinema.name %></td>
+    </tr>
+  </tbody>
+</table><br><br>
