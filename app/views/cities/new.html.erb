@@ -1,0 +1,15 @@
+<h1> Create City </h1><br>
+<%= form_with model: @city do |f| %>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div><br>
+  
+  <div>
+    <%= f.submit %>
+  </div>
+
+<% end %><br>
+
+<%= link_to "BACK", cities_path%>

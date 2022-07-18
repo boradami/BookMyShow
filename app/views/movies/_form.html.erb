@@ -31,6 +31,11 @@
   </div><br>
 
   <div>
+    <%= f.label :cinema_id, "Cinema" %>
+    <%= f.select :cinema_id, Cinema.all.map{|c| [c.name, c.id]} %>
+  </div><br>
+
+  <div>
     <%= f.submit %>
   </div>
 

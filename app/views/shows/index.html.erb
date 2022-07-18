@@ -1,6 +1,6 @@
 
 <h1>Shows</h1>
-<table>
+<table class="table">
   <thead>
     <th>Show Start Time</th>
     <th>Start End Time</th>
@@ -13,8 +13,8 @@
   <tbody>
     <% @shows.each do |show| %>
       <tr>
-        <td><%= show.show_start_time.strftime("%H:%M:%S") %></td>
-        <td><%= show.show_end_time.strftime("%H:%M:%S") %></td>
+        <td><%= show.show_start_time&.strftime("%H:%M:%S") %></td>
+        <td><%= show.show_end_time&.strftime("%H:%M:%S") %></td>
         <td><%= show.amount %></td>
         <td><%= show.screen.screen_name %></td>
         <td><%= show.movie.name %></td>

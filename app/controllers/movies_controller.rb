@@ -1,6 +1,13 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.all
+    if params[:name].present?
+      @movies = Movie.all.where('name ilike ?', "%#{params[:name]}%")
+    elsif params[:cinema_id].present?
+      @cinema = Cinema.find(params[:cinema_id])
+      @movies = @cinema.movies
+    else
+      @movies = Movie.all
+    end
   end
 
   def show
@@ -41,6 +48,6 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:name, :description, :language, :movie_type, :duration, :release_date)
+    params.require(:movie).permit(:name, :description, :language, :movie_type, :duration, :release_date, :cinema_id)
   end
 end

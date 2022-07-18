@@ -1,10 +1,16 @@
 
 <h1>Movies</h1>
-<table>
+<%= form_with url: movies_path, method: :get do |form|%>
+  <%= form.text_field :name, placeholder: "Search by movie name", value: params[:name], autocomplete: :off, class: "border border-blue-500 rounded p-2" %>
+  <%= form.submit "Search", class: "btn btn-primary" %>
+<% end %>  
+
+<table class="table">
   <thead>
     <th>Name</th>
     <th>Language</th>
     <th>Movie Type</th>
+    <th>Show Time</th>
     <th>Action</th>
   </thead>
   <tbody>
@@ -16,10 +22,15 @@
         </td>
         <td><%= movie.language %></td>
         <td><%= movie.movie_type %></td>
-        <td>
-          <%= link_to "Edit", edit_movie_path(movie)%>|
-          <%= link_to "Delete", movie_path(movie), method: :delete, data: {confirm: "Are you sure..?"}%>
-        </td>
+        <% movie.shows.each do |show| %>
+          <td>
+            <%= link_to new_booking_path(screen_id: show.screen.id, show_id: show.id) do %>
+              <%= show.show_start_time.strftime("%H:%M") %>
+            <% end %>
+          </td>
+        <% end %>
+        <td><%= link_to "Edit", edit_movie_path(movie)%></td>
+        <td><%= link_to "Delete", movie_path(movie), method: :delete, data: {confirm: "Are you sure..?"}%></td>
       </tr>
     <% end %>
   </tbody>

@@ -4,11 +4,10 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
      if resource.is_a?(User)
-      movies_path
+      cities_path
      elsif resource.is_a?(Admin)
-      admins_dashboard_index_path
+      movies_path
      else
-       super
      end
    end
 

@@ -1,0 +1,45 @@
+
+<h1> City </h1>
+<table class="table">
+  <thead>
+    <th>City Name</th>
+  </thead>
+  <tbody>
+  <% @cities.each do |city| %>
+    <tr>
+      <td>
+          <%= city.name %><br>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table><br><br>
+
+<h3><%= link_to "Create New City", new_city_path%></h3>
+
+<div class="modal fade" id="my-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Select City</h4>
+      </div>
+      <div class="modal-body">
+        <p><% @cities.each do |city| %>
+          <tr>
+            <td><%= link_to cinemas_path(city_id: city.id) do %>
+                <%= city.name %><br>
+                <% end %>
+            </td>
+          </tr>
+        <% end %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(function() {
+    $('#my-modal').modal('show');
+});
+</script>

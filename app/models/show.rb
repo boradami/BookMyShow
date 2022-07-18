@@ -7,8 +7,12 @@ class Show < ApplicationRecord
   validate :show_time_unique
 
   def show_time_unique
-    if show_start_time..show_end_time
-      errors.add(:show_start_time, "already exist")
+    self.screen.shows.each do |show|
+      show_start = show.show_start_time
+      show_end = show.show_end_time
+      if show_start_time <= show_end
+        errors.add(:show_start_time, "already exist")
+      end
     end
   end
 

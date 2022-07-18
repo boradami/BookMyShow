@@ -13,7 +13,7 @@ class SeatsController < ApplicationController
     if @seat.save
       ActiveRecord::Base.transaction do
         @seat.seat_number.to_i.times do |n|
-          Seat.create!(seat_number: "A#{n+1}", screen_id: 1)
+          Seat.create!(seat_number: "A#{n+1}", screen_id: 2)
         end
       end
       redirect_to seats_path

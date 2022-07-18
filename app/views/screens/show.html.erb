@@ -1,21 +1,17 @@
 
 <%= link_to "Back", screens_path %>
 <h1>Screen</h1>
-<table>
+<table class="table">
   <thead>
     <th>Screen Name</th>
     <th>Total Seats</th>
-    <th>Total Column</th>
     <th>Cinema</th>
-    <th>Movie</th>
   </thead>
   <tbody>
       <tr>
         <td><%= @screen.screen_name %></td>
         <td><%= @screen.total_seats %></td>
-        <td><%= @screen.total_column %></td>
         <td><%= @screen.cinema.name %></td>
-        <td><%= @screen.movie.name %></td>
       </tr>
   </tbody>
 </table>

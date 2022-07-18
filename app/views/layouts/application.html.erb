@@ -7,16 +7,23 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0-beta1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   </head>
 
   <body>
-  
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <h4><%= link_to "Movie", new_movie_path, class: "badge badge-success" %></h4>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <h4><%= link_to "City", new_city_path, class: "badge badge-success" %></h4>
+          </li>
+        <li class="nav-item">
+            <h4><%= link_to "Cinema", new_cinema_path, class: "badge badge-success" %></h4>
+          </li>
           <li class="nav-item">
-          <h4><%= link_to "Cinema", new_cinema_path, class: "badge badge-success" %></h4>
+            <h4><%= link_to "Movie", new_movie_path, class: "badge badge-success" %></h4>
           </li>
           <li class="nav-item">
             <h4><%= link_to "Screen", new_screen_path, class: "badge badge-success" %></h4>
@@ -27,19 +34,17 @@
           <li class="nav-item">
             <h4><%= link_to "Show", new_show_path, class: "badge badge-success" %></h4>
           </li>
-    
-            <% if user_signed_in? %>
-            <h4><%= link_to 'Sign Out as User', destroy_user_session_path, method: :delete, class: "badge badge-success" %></h4> |
-            <% elsif !admin_signed_in? %>
-            <h4><%= link_to "Sign In as User", new_user_session_path, class: "badge badge-success" %></h4> |
-            <% end %>
-
         </ul>
       </div>
+      <h4><%= link_to "Booking Movie Ticket", movies_path, class: "badge badge-success" %></h4>
+      <% if user_signed_in? %>
+      <h4><%= link_to 'Sign Out as User', destroy_user_session_path, method: :delete, class: "badge badge-success" %></h4> |
+      <% elsif !admin_signed_in? %>
+      <h4><%= link_to "Sign In as User", new_user_session_path, class: "badge badge-success" %></h4> |
+      <% end %>
     </nav><br>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-
     <%= yield %>
   </body>
 </html>

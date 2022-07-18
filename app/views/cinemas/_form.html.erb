@@ -9,6 +9,11 @@
     <%= f.label :address %>
     <%= f.text_field :address %>
   </div><br>
+
+  <div>
+    <%= f.label :city_id, "City" %>
+    <%= f.select :city_id, City.all.map{|c| [c.name, c.id]} %>
+  </div><br>
   
   <div>
     <%= f.submit %>

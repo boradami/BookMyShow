@@ -1,6 +1,11 @@
 class CinemasController < ApplicationController
   def index
-    @cinemas = Cinema.all
+    if params[:city_id].present?
+      @city = City.find(params[:city_id])
+      @cinemas = @city.cinemas
+    else
+      @cinemas = Cinema.all
+    end
   end
 
   def show
@@ -41,6 +46,6 @@ class CinemasController < ApplicationController
   private
 
   def cinema_params
-    params.require(:cinema).permit(:name, :address)
+    params.require(:cinema).permit(:name, :address, :city_id)
   end
 end

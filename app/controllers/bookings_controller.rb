@@ -1,6 +1,5 @@
 class BookingsController < ApplicationController
 
-  
   def new
     @booking = Booking.new
     @screen = Screen.find(params[:screen_id])
@@ -11,10 +10,17 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     if @booking.save
-      redirect_to movies_path
+      redirect_to generate_ticket_booking_path  (@booking.id)
     else
       render :new
     end
+  end
+
+  def generate_ticket
+    @booking = Booking.find(params[:id])
+    total_seats = @booking.seats.count
+    show_amount = @booking.show.amount
+    @amount = (total_seats*show_amount)
   end
 
   private

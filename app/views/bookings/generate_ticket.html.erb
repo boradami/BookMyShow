@@ -1,0 +1,11 @@
+<h1 class="text-center">Booking</h1>
+<p class="fs-4">User: <%= @booking.user.email %></p>
+<p class="fs-4">Show Time: <%= @booking.show.show_start_time.strftime("%H:%M") %></p>
+<p class="fs-4">Cinema Name: <%= @booking.show.cinema.name %></p>
+<p class="fs-4">Movie: <%= @booking.show.movie.name %></p>
+<p class="fs-4">Screen Name: <%= @booking.show.screen.screen_name %></p>
+<p class="fs-4">Total Seat Booked: <%= @booking.seats.count %></p>
+<p class="fs-4">Seat Number: <% @booking.seats.each do |seat| %> 
+                      <%= seat.seat_number %>
+                    <% end %></p>
+<p class="fs-4">Total Amount: <%= @amount %></p>
