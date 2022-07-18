@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     if @booking.save
-      redirect_to generate_ticket_booking_path  (@booking.id)
+      redirect_to generate_ticket_booking_path(@booking.id)
     else
       render :new
     end

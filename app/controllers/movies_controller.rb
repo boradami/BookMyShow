@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
   def index
     if params[:name].present?
       @movies = Movie.all.where('name ilike ?', "%#{params[:name]}%")
