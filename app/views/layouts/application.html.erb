@@ -36,7 +36,6 @@
           </li>
         </ul>
       </div>
-      <h4><%= link_to "Booking Movie Ticket", movies_path, class: "badge badge-success" %></h4>
       <% if user_signed_in? %>
       <h4><%= link_to 'Sign Out as User', destroy_user_session_path, method: :delete, class: "badge badge-success" %></h4> |
       <% elsif !admin_signed_in? %>

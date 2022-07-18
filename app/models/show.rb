@@ -2,7 +2,7 @@ class Show < ApplicationRecord
   belongs_to :screen
   belongs_to :movie
   belongs_to :cinema
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
 
   validate :show_time_unique
 

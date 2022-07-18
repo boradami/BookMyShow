@@ -10,7 +10,9 @@
     <th>Name</th>
     <th>Language</th>
     <th>Movie Type</th>
+    <% if admin_signed_in? %>
     <th>Show Time</th>
+    <% end %>
     <th>Action</th>
   </thead>
   <tbody>
@@ -29,13 +31,16 @@
             <% end %>
           </td>
         <% end %>
+        <% if admin_signed_in? %>
         <td><%= link_to "Edit", edit_movie_path(movie)%></td>
         <td><%= link_to "Delete", movie_path(movie), method: :delete, data: {confirm: "Are you sure..?"}%></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table><br><br>
-
+<% if admin_signed_in? %>
 <h3>
  <%= link_to "New Movie", new_movie_path %>
 </h3>
+<% end %>
