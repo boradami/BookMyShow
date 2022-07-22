@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_18_105515) do
+ActiveRecord::Schema.define(version: 2022_07_22_063549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 2022_07_18_105515) do
 
   create_table "bookings", force: :cascade do |t|
     t.bigint "show_id", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
     t.index ["show_id"], name: "index_bookings_on_show_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -100,16 +100,6 @@ ActiveRecord::Schema.define(version: 2022_07_18_105515) do
     t.index ["screen_id"], name: "index_shows_on_screen_id"
   end
 
-  create_table "sub_prices", force: :cascade do |t|
-    t.integer "price"
-    t.bigint "show_id", null: false
-    t.bigint "seat_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["seat_id"], name: "index_sub_prices_on_seat_id"
-    t.index ["show_id"], name: "index_sub_prices_on_show_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -129,6 +119,4 @@ ActiveRecord::Schema.define(version: 2022_07_18_105515) do
   add_foreign_key "shows", "cinemas"
   add_foreign_key "shows", "movies"
   add_foreign_key "shows", "screens"
-  add_foreign_key "sub_prices", "seats"
-  add_foreign_key "sub_prices", "shows"
 end
